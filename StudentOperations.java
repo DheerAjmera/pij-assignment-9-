@@ -34,4 +34,9 @@ public class StudentOperations {
         return dao.searchByPRN(prn);  // Return Student object or null
     }
 
+    // Updating a student’s details and returns operation status
+    public boolean updateStudent(Student student) {
+        return dao.updateStudent(student);  // Returns true if update successful
+    }
+
 
