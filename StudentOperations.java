@@ -6,3 +6,9 @@ public class StudentOperations {
 
     // Instance of StudentDAO to interact with the database
     private StudentDAO dao;
+
+    // Constructor initializes the DAO object
+    public StudentOperations() {
+        dao = new StudentDAO();
+    }
+
