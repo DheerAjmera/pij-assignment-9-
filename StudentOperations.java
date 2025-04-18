@@ -39,4 +39,10 @@ public class StudentOperations {
         return dao.updateStudent(student);  // Returns true if update successful
     }
 
+    // Deletes a student using PRN and returns operation status
+    public boolean deleteStudent(int prn) {
+        return dao.deleteStudent(prn);  // Returns true if deletion successful
+    }
+}
+
 
