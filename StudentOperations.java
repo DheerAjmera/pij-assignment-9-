@@ -18,3 +18,14 @@ public class StudentOperations {
         System.out.println("Student added successfully.");
     }
 
+
+    // Fetching and displaying all students from the database
+    public void displayStudents() {
+        ArrayList<Student> list = dao.getAllStudents();  // Get list from DB
+        if (list.isEmpty()) {
+            System.out.println("No students found.");
+        } else {
+            for (Student s : list) s.display();  // Display each student's info
+        }
+    }
+
