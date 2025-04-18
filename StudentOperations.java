@@ -29,3 +29,9 @@ public class StudentOperations {
         }
     }
 
+    // Searching for a student using PRN via DAO
+    public Student searchByPRN(int prn) {
+        return dao.searchByPRN(prn);  // Return Student object or null
+    }
+
+
