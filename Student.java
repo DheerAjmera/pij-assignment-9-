@@ -26,3 +26,10 @@ public class Student {
     public void setBranch(String branch) { this.branch = branch; }
     public void setBatch(String batch) { this.batch = batch; }
     public void setCGPA(float cgpa) { this.cgpa = cgpa; }
+
+    // Method to display student information 
+    public void display() {
+        System.out.printf("Name: %s | PRN: %d | Branch: %s | Batch: %s | CGPA: %.2f\n", 
+                          name, prn, branch, batch, cgpa);
+    }
+}
