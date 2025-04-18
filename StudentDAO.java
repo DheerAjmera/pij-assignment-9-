@@ -82,3 +82,28 @@ public class StudentDAO {
         return null;  // Return null if student not found
     }
 
+     // Updating an existing student's information
+    public boolean updateStudent(Student student) {
+        try (
+            // Preparing SQL update statement
+            Connection conn = DBConnection.getConnection();
+            PreparedStatement ps = conn.prepareStatement(
+                "UPDATE students SET name=?, branch=?, batch=?, cgpa=? WHERE prn=?")
+        ) {
+            // Set updated values in the query
+            ps.setString(1, student.getName());
+            ps.setString(2, student.getBranch());
+            ps.setString(3, student.getBatch());
+            ps.setFloat(4, student.getCGPA());
+            ps.setInt(5, student.getPRN());
+
+            // Execute update and return true if successful
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            // Handle SQL errors
+            System.out.println("Error updating student: " + e.getMessage());
+        }
+
+        return false;  // Return false if update fails
+    }
+
