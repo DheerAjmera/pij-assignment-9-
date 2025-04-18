@@ -25,3 +25,31 @@ public class StudentDAO {
             System.out.println("Error adding student: " + e.getMessage());
         }
     }
+    
+    // Retrieving all students from the database
+    public ArrayList<Student> getAllStudents() {
+        ArrayList<Student> list = new ArrayList<>();
+
+        try (
+            // Connecting to database, create a statement and execute query
+            Connection conn = DBConnection.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM students")
+        ) {
+            // Iterating over the result set and create Student objects
+            while (rs.next()) {
+                list.add(new Student(
+                    rs.getString("name"),
+                    rs.getInt("prn"),
+                    rs.getString("branch"),
+                    rs.getString("batch"),
+                    rs.getFloat("cgpa")
+                ));
+            }
+        } catch (SQLException e) {
+            // Handle SQL errors
+            System.out.println("Error fetching students: " + e.getMessage());
+        }
+
+        return list;
+    }
